@@ -1,1 +1,4 @@
-//code for index file
+module.exports = {
+    bookingcontroller: require('./bookingController'),
+    usercontroller: require("./userController")
+}
