@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken")
-const { UserModel } = require("../model")
+const { models } = require("../model")
 
 const validateSession = async (req, res, next) => { 
 
@@ -10,10 +10,10 @@ const validateSession = async (req, res, next) => {
             const { authorization } = req.headers //desctructing so we can mess around with it
             console.log(authorization)
             const payload = authorization ? jwt.verify
-            (authorization, process.env.JWT_SECRET_KEY) : undefined //if authorization is true, we want our token verified (JWT verify method). otherwise, return undefined. 
+            (authorization, process.env.JWT_SECRET) : undefined //if authorization is true, we want our token verified (JWT verify method). otherwise, return undefined. 
     
             if (payload) { // if we got our payload back(tokens valid)....
-                let foundUser = await UserModel.findOne({  // looking for user in db
+                let foundUser = await models.UserModel.findOne({  // looking for user in db
                     where: {id: payload.id} // payload is wrapped in an object, so id is a property
                 })
     
@@ -37,7 +37,7 @@ const validateSession = async (req, res, next) => {
         }
     } catch (err) {
         res.status(500).json({
-            message: err
+            message: err.message
         })
     }
 }

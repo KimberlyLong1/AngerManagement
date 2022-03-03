@@ -11,7 +11,7 @@ app.use("/user", controllers.usercontroller);
 app.use("/booking", middleware, controllers.bookingcontroller)
 
 dbConnection.authenticate()
-.then(() => dbConnection.sync( { force: true }))
+.then(() => dbConnection.sync( ))
 .then(() => {
     app.listen(process.env.PORT, () => {
         console.log(`[Server]: App is listening on ${process.env.PORT}.`);
