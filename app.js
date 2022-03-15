@@ -3,12 +3,18 @@ const Express = require('express');
 const app = Express();
 const dbConnection = require("./db");
 const controllers = require("./controllers");
-const middleware = require("./middleware/validate-session");
+const validateSession = require("./middleware/validate-session");
 
 app.use(Express.json());
 app.use(require("./middleware/headers"));
+
+const helmet= require('helmet');
+
 app.use("/user", controllers.usercontroller);
-app.use("/booking", middleware, controllers.bookingcontroller)
+app.use("/booking", controllers.bookingcontroller)
+app.use("/item", controllers.itemscontroller)
+app.use(helmet());
+
 
 dbConnection.authenticate()
 .then(() => dbConnection.sync( ))

@@ -17,7 +17,11 @@ const User = db.define("user", {
     },
     password: {
         type: DataTypes.STRING(),
-        allowNull: false
+        allowNull: false,
+    },
+    admin: {
+        type: DataTypes.STRING(10),
+        allowNull: false,
     }
 })
 

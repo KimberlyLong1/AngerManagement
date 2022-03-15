@@ -11,29 +11,14 @@ const Booking = db.define('booking', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    packageNumber: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
-    quanity: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
-    eventDate: {
+    email: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    eventTime: {
+    phoneNumber: {
         type: DataTypes.STRING,
         allowNull: true 
     },
-    totalCost: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
-    owner_id: {
-        type: DataTypes.INTEGER
-    }
 })
 
 module.exports = Booking

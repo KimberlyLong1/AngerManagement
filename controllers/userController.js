@@ -6,7 +6,7 @@ const { UniqueConstraintError } = require('sequelize/lib/errors');
 //const model = require("../model");
 
 router.post("/signup", async (req, res) => {
-    const { firstName, lastName, email, password } = req.body.user
+    const { firstName, lastName, email, password, admin } = req.body.user
 
     try {
         const newUser = await models.UserModel.create({
@@ -14,7 +14,8 @@ router.post("/signup", async (req, res) => {
             lastName,
             email,
             password: bcrypt.hashSync(password, 10),
-        })
+            admin,
+        });
         
         const token = jwt.sign(
             { id: newUser.id },
