@@ -20,7 +20,7 @@ const User = db.define("user", {
         allowNull: false,
     },
     admin: {
-        type: DataTypes.STRING(10),
+        type: DataTypes.BOOLEAN(10),
         allowNull: false,
     }
 })

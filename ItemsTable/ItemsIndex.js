@@ -19,12 +19,12 @@
 //     },
 //     2: {
 //       id: 2,
-      name: "Keep It Glassy",
-      time: "20 minutes",
-      price: 11025,
-      numberOfPeople: "1-2 people- Aged 13+",
-      description: "12 mini items, 24 small items, 12 medium",
-      image: " "
+    //   name: "Keep It Glassy",
+    //   time: "20 minutes",
+    //   price: 11025,
+    //   numberOfPeople: "1-2 people- Aged 13+",
+    //   description: "12 mini items, 24 small items, 12 medium",
+    //   image: " "
 //     },
 //     3: {
 //       id: 3,
