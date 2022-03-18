@@ -8,12 +8,9 @@ const validateSession = require("./middleware/validate-session");
 app.use(Express.json());
 app.use(require("./middleware/headers"));
 
-const helmet= require('helmet');
-
 app.use("/user", controllers.usercontroller);
 app.use("/booking", controllers.bookingcontroller)
 app.use("/item", controllers.itemscontroller)
-app.use(helmet());
 
 
 dbConnection.authenticate()
@@ -24,5 +21,5 @@ dbConnection.authenticate()
     });
 })
 .catch((err) => {
-    console.log(`[Server]: Server crashed. Error = ${err}`);
+    console.log(`[Server]: Server crashed in app index. Error = ${err}`);
 })

@@ -1,5 +1,5 @@
 const db = require('../db');
-const BookingModel = require("./booking");
+const BookingModel = require("./items");
 const UserModel = require("./user");
 const ItemsModel = require("./items")
 

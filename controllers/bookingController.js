@@ -46,6 +46,7 @@ router.post("/", validateJWT, async (req, res) =>{
 ////////////////Working////////////////////////////////
 router.put("/:id", validateJWT, async (req, res) => {
     const ownerid = req.user.id
+    const id = req.params.id
       const {
           contactFirstName,
           contactLastName,
@@ -57,7 +58,7 @@ router.put("/:id", validateJWT, async (req, res) => {
       try {
           await models.BookingModel.update(
               { contactFirstName, contactLastName, email, phoneNumber},
-              { where: { userId: ownerid } } //looking to update where the id in our database matches the id in our endpoint // return the effect that rose
+              { where: {id: id, userId: ownerid } } //looking to update where the id in our database matches the id in our endpoint // return the effect that rose
           )
           .then((result) => {
               res.status(200).json({

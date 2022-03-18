@@ -1,17 +1,17 @@
- const router = require("express").Router(); // way to merge lines 1 and 2! 
+ const router = require("express").Router(); 
  let validateJWT = require("../middleware/validate-session")
- const { models, packageCode  } = require("../model")
+ const { models  } = require("../model")
 
 
 // GET ALL ITEMS by userID
-router.get("/getitems/:id", validateJWT, async (req, res) => {
+router.get("/getmyitems", validateJWT, async (req, res) => {
     
-      const itemid = req.params.id
+      const itemid = req.item.id
       try {
-        const allItems = await models.ItemsModel.findAll({
-          where: { id: itemid}})
+        const allItems = await models.ItemsModel.findAll({where: { id: itemid}})
           console.log(allItems)
           res.status(200).json(allItems)
+
       } catch (err) {
         console.log(err)
         res.status(500).json({ error: err})
@@ -22,13 +22,13 @@ router.post("/", validateJWT, async (req, res) => {
     const { id } = req.user;
     try {
       const createItem = await models.ItemsModel.create({
-        name: req.body.name,
-        time: req.body.time,
-        price: req.body.price,
-        numberOfPeople: req.body.numberOfPeople,
-        description: req.body.description,
-        image: req.body.image,
-        packageCode: req.body.packageCode,  
+        name: req.body.item.name,
+        time: req.body.item.time,
+        price: req.body.item.price,
+        numberOfPeople: req.body.item.numberOfPeople,
+        description: req.body.item.description,
+        image: req.body.item.image,
+        packageCode: req.body.item.packageCode,  
         userId: id,
       })
       console.log(createItem)
