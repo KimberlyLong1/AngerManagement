@@ -1,7 +1,7 @@
 const db = require('../db');
 const BookingModel = require("./items");
 const UserModel = require("./user");
-const ItemsModel = require("./items")
+const ItemsModel = require("./itemModel")
 
 
 UserModel.hasMany(BookingModel);

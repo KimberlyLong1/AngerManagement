@@ -6,9 +6,9 @@
 // GET ALL ITEMS by userID
 router.get("/getmyitems", validateJWT, async (req, res) => {
     
-      const itemid = req.item.id
+      const userId = req.user.id
       try {
-        const allItems = await models.ItemsModel.findAll({where: { id: itemid}})
+        const allItems = await models.ItemsModel.findAll({where: { userId: userId}})
           console.log(allItems)
           res.status(200).json(allItems)
 
@@ -46,6 +46,7 @@ router.post("/", validateJWT, async (req, res) => {
 // UPDATE ITEM
 router.put("/:id", validateJWT, async (req, res) => {
     const itemsid = req.params.id
+    const userId = req.user.id
     const {
       name,
       time,
@@ -58,7 +59,7 @@ router.put("/:id", validateJWT, async (req, res) => {
       try {
         await models.ItemsModel.update(
           { name, time, price, numberOfPeople, description, image, packageCode},
-          { where: { userId: itemsid }}
+          { where: { userId: userId, id: itemsid }}
         )
         .then((result) => {
           res.status(200).json({
