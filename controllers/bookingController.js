@@ -8,7 +8,7 @@ router.get("/getmy", validateJWT,async (req, res) => {
  
     const ownerid = req.user.id
     try {
-    const allBookings = await models.BookingModel.findAll({ where: { id: ownerid}})
+    const allBookings = await models.BookingModel.findAll({ where: { userId: ownerid}})
         console.log(allBookings)
      res.status(200).json(allBookings)
  
