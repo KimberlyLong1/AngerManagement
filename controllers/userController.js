@@ -20,7 +20,7 @@ router.post("/signup", async (req, res) => {
         const token = jwt.sign(
             { id: newUser.id },
             process.env.JWT_SECRET,
-            { expiresIn: 60 * 60 * 24 }
+            { expiresIn: 60 * 60 * 12 }
         );
 
         res.status(201).json({
@@ -60,7 +60,7 @@ console.log (loginUser)
                 let token = jwt.sign(
                     { id: loginUser.id },
                     process.env.JWT_SECRET,
-                    { expiresIn: 60 * 60 * 24 }
+                    { expiresIn: 60 * 60 * 12 }
                 );
 
                 res.status(200).json({

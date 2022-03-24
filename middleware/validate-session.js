@@ -13,10 +13,8 @@ const validateJWT = async (req, res, next) => {
             ) {
                 const { authorization } = req.headers;
                 // console.log("Authorization", authorization);
-                const payload = authorization ? jwt.verify(
-            authorization.includes("Bearer")
-                ? authorization.split(" ")[1]
-                : authorization,
+            const payload = authorization ? jwt.verify(
+                authorization,
                 process.env.JWT_SECRET
         ) : undefined;
         
